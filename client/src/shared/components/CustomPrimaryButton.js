@@ -1,7 +1,7 @@
 import React from 'react';
 import Button from '@mui/material/Button'
 
-const CustomPrimamyButton = ({
+const CustomPrimaryButton = ({
     label, additionalStyles, disabled, onClick,
 }) => {
     return <Button
@@ -23,4 +23,4 @@ const CustomPrimamyButton = ({
     </Button>
 }
 
-export default CustomPrimamyButton;
+export default CustomPrimaryButton;

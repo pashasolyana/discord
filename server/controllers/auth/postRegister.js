@@ -11,9 +11,7 @@ const postRegister = async (req, res) =>{
             mail : mail
         })
         if(candidate){
-            return res.status(409).json({
-                message : "Email already in use"
-            })
+            return res.status(409).send("Email already in use")
         }
         const encryptedPassword = await bcrypt.hash(password, 10)
         
@@ -44,9 +42,7 @@ const postRegister = async (req, res) =>{
 
     } catch (error) {
         console.log(error)
-        return res.status(500).json({
-            message : "Please try again"
-        })
+        return res.status(500).send("Please try again")
     }
 }
 

@@ -26,14 +26,10 @@ const postLogin = async (req, res) =>{
                 }
             })
         }
-        return res.status(400).json({
-            message : "Invalid credentials"
-        })
+        return res.status(400).send("Invalid credentials")
     } catch (error) {
         console.log(error)
-        return res.status(500).json({
-            message : "Please try again"
-        })
+        return res.status(500).send("Please try again")
     }
 }
 

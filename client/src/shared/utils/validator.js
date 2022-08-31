@@ -11,15 +11,15 @@ export const validateRegisterForm = ({mail, password, username}) => {
     ) 
 }
 
-const validatePassword = (password) =>{
+export const validatePassword = (password) =>{
     return password.length > 5 && password.length < 12
 }
 
-const validateMail = (mail) => {
+export const validateMail = (mail) => {
     const emailPattern = /\S+@\S+\.\S+/
     return emailPattern.test(mail)
 }
 
-const validateUsername = (username) => {
+export const validateUsername = (username) => {
     return username.length > 2 && username.length < 13
 }
