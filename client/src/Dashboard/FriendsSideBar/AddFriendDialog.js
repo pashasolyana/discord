@@ -4,14 +4,15 @@ import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 import React, { useState, useEffect } from 'react'
-import {validateMail} from '../../shared/utils/validator'
+import { validateMail } from '../../shared/utils/validator'
 import InputWithLabel from '../../shared/components/InputWithLabel'
+import CustomPrimaryButton from '../../shared/components/CustomPrimaryButton';
 
 const AddFriendDialog = ({
     isDialogOpen,
     closeDialogHandler,
-    sendFriendInvitation = () => {}
-}) =>{
+    sendFriendInvitation = () => { }
+}) => {
     const [mail, setMail] = useState('')
     const [isFormValid, setIsFormValid] = useState('')
 
@@ -19,7 +20,7 @@ const AddFriendDialog = ({
         // send friend request to server
     }
 
-    const handeCloseDialog = () =>{
+    const handeCloseDialog = () => {
         closeDialogHandler();
         setMail('')
     }
@@ -38,14 +39,26 @@ const AddFriendDialog = ({
                         Enter e-mail address of friend which you would like to invite
                     </Typography>
                 </DialogContentText>
-                    <InputWithLabel
-                        label='Mail'
-                        type='text'
-                        value={mail}
-                        setValue={setMail}
-                        placeholder='Enter mail address'
-                    />
+                <InputWithLabel
+                    label='Mail'
+                    type='text'
+                    value={mail}
+                    setValue={setMail}
+                    placeholder='Enter mail address'
+                />
             </DialogContent>
+            <DialogActions>
+                <CustomPrimaryButton
+                    onClick={handleSendInvitation}
+                    disabled={!isFormValid}
+                    label='Send'
+                    additionalStyles={{
+                        marginLeft: '15px',
+                        marginRight: '15px',
+                        marginBottom: '10px'
+                    }}
+                />
+            </DialogActions>
         </Dialog>
     )
 

@@ -1,4 +1,4 @@
 export const logout = () => {
     localStorage.clear();
-    window.location.pathname = '/signin';
+    window.location.pathname = 'signin';
 }

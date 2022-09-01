@@ -1,8 +1,10 @@
 const express = require('express');
 const cors = require('cors')
+const http = require('http')
 const mongoose = require('mongoose')
 require('dotenv').config()
 
+const socketServer = require('./socketServer');
 const authRoutes = require('./routes/auth')
 
 const PORT = process.env.PORT || process.env.API_PORT
@@ -14,9 +16,11 @@ app.use(cors())
 
 app.use('/api/auth', authRoutes)
 
+const server = http.createServer(app)
+socketServer.registerSocketServer(server)
 mongoose.connect(process.env.DB_URL)
     .then(() => {
-        app.listen(PORT, () =>{
+        server.listen(PORT, () =>{
             console.log(`${PORT}`)
         })    
     })
