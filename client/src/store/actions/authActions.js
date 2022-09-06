@@ -1,4 +1,4 @@
-import { apiLogin, apiRegister } from "../../api";
+import * as api from '../../api'
 import { openAlertMessage } from "./alertActions";
 
 export const authActions = {
@@ -22,7 +22,7 @@ const setUserDetails = (userDetails) => {
 
 const login = (userDetails, history) => {
     return async (dispatch) => {
-        const response = await apiLogin(userDetails);
+        const response = await api.apiLogin(userDetails);
         console.log(response)
         if (response.error) {
             dispatch(openAlertMessage(response?.exception?.response?.data));
@@ -38,7 +38,7 @@ const login = (userDetails, history) => {
 
 const register = (userDetails, history) => {
     return async (dispatch) => {
-        const response = await apiRegister(userDetails);
+        const response = await api.apiRegister(userDetails);
         if (response.error) {
             dispatch(openAlertMessage(response?.exception?.response?.data));
         } else {

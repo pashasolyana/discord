@@ -36,6 +36,19 @@ export const apiRegister = async(data) =>{
     }
 }
 
+export const sendFriendInvitation = async(data) => {
+    try {
+        return await axios.post('http://localhost:5002/api/friend-invitation/invite', data)
+    } catch (exception) {
+        console.log(exception)
+        checkResponseCode(exception)
+        return {
+            error : true,
+            exception,
+        }
+    }
+}
+
 const checkResponseCode = (exception) => {
     const responseCode = exception?.response?.status;
 
