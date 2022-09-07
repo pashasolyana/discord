@@ -1,6 +1,5 @@
 const mongoose = require('mongoose');
 
-
 const userSchema = new mongoose.Schema({
     mail : {
         type : String,
@@ -11,7 +10,8 @@ const userSchema = new mongoose.Schema({
     },
     password : {
         type : String,
-    }
+    },
+    friends: [{type : mongoose.Schema.Types.Object, ref : 'User'}]
 })
 
-module.exports = mongoose.model('user', userSchema)
+module.exports = mongoose.model('User', userSchema)
