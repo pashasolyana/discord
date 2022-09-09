@@ -49,6 +49,32 @@ export const sendFriendInvitation = async(data) => {
     }
 }
 
+export const acceptFriendInvitation = async(data) =>{
+    try {
+        return await axios.post('http://localhost:5002/api/friend-invitation/accept', data)
+    } catch (exception) {
+        console.log(exception)
+        checkResponseCode(exception)
+        return {
+            error : true,
+            exception,
+        }
+    }
+}
+
+export const rejectFriendInvitation = async(data) =>{
+    try {
+        return await axios.post('http://localhost:5002/api/friend-invitation/reject', data)
+    } catch (exception) {
+        console.log(exception)
+        checkResponseCode(exception)
+        return {
+            error : true,
+            exception,
+        }
+    }
+}
+
 const checkResponseCode = (exception) => {
     const responseCode = exception?.response?.status;
 
