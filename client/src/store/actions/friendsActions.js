@@ -37,6 +37,14 @@ const sendFriendInvitation = (data,closeDialogHandler) =>{
     }
 }
 
+export const setFriends = (friends) =>{
+    return {
+        type : friendActions.SET_FRIENDS,
+        friends,
+    }
+
+}
+
 const acceptFriendInvitation = (data) => {
     return async(dispatch) =>{
         const response = await api.acceptFriendInvitation(data)
