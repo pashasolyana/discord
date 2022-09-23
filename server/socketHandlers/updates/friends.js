@@ -38,17 +38,17 @@ const updateFriends = async (userId) =>{
                         username : i.username,
                     };
                 })
-            }
-            // get io server instance
-            const io = serverStore.getSocketServerInstance();
-    
-            receiverList.forEach(receiverSocketId => {
-                io.to(receiverSocketId).emit('friends-list', {
-                    friends : friendsList ? friendsList : [],
-                })
-            });
-        }
 
+                // get io server instance
+                const io = serverStore.getSocketServerInstance();
+        
+                receiverList.forEach(receiverSocketId => {
+                    io.to(receiverSocketId).emit('friends-list', {
+                        friends : friendsList ? friendsList : [],
+                    })
+                });
+            }
+        }
     } catch (error) {
         console.log(error)
     }

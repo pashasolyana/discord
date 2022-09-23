@@ -45,6 +45,13 @@ export const setFriends = (friends) =>{
 
 }
 
+export const setOnlineUsers = (onlineUsers) =>{
+    return {
+        type : friendActions.SET_ONLINE_USERS,
+        onlineUsers,
+    }
+}
+
 const acceptFriendInvitation = (data) => {
     return async(dispatch) =>{
         const response = await api.acceptFriendInvitation(data)
